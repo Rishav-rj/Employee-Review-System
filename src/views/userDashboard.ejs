@@ -1,0 +1,57 @@
+<header>
+    <nav class="user-dashboard">
+        <h1>
+            <i class="fa-solid fa-users-between-lines" style="color: #f9fafa;"></i>
+            ERS
+        </h1>
+        <div>
+            <h2>Welcome <%=user.fullname%></h2>
+        </div>
+        <div>
+            <a href="/logout">
+                <button>Sign Out</button>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="main-container">
+        <div class="left-container inner-container">
+            <h2>
+                Your Performance Reviews
+            </h2>
+            <div class="left-contant content-container">
+                <%if(user.reviews.length>0){%>
+                    <% let i = 0%>
+                    <%user.reviews.map((review)=>{ i++ %>
+                        <div class="review">
+                            <span><%=i%>.</span>
+                            <p><%= review.content %></p>
+                        </div>    
+                    <%})%>
+                <%}%>
+            </div>
+        </div>
+        
+        <div class="right-container inner-container">
+            <h2>
+                Submit Feedback Request 
+            </h2>
+            <div class="content-container">
+                <%if(user.assignedFeedbacks.length>0){%>
+                    <%user.assignedFeedbacks.map((feedback)=>{ %>
+                        <div class="form">
+                            <form action="/submitfeedback", method="post">
+                                <h3><%=feedback.username%></h3>
+                                <input type="hidden" value="<%=feedback.userId%>" name="userId">
+                                <textarea placeholder="Share Performance feedback..." name="content"></textarea>
+                                <button type="submit">Submit</button>
+                            </form>
+                        </div>
+                    <%})%>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</main>

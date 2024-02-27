@@ -1,0 +1,44 @@
+<header>
+    <nav>
+        <h1>
+            <i class="fa-solid fa-users-between-lines" style="color: #f9fafa;"></i>
+            ERS
+        </h1>
+    </nav>
+</header>
+<%if (!creds){%>
+    <script>
+        alert("Wrong Credintial, Please signup if you new user!")
+    </script>
+<%}%>
+<main>
+    <div class="container center">
+        <div class="forms">
+            <div class="signup center" id="sign-up">
+                <h2 id="sign-btn">Signup</h2>
+                <form id="signup-form" class="center">
+                    <input type="text" placeholder="Full Name" name="fullname" id="fullname">
+                    <input type="text" placeholder="Email address" name="email" id="signup-email">
+                    <div class="password-container">
+                        <input type="password" placeholder="Password" class="signuppassword" name="password" id="signup-password">
+                        <i class="fa-solid fa-eye opensignup"></i>
+                        <i class="fa-solid fa-eye-slash hide closesignup"></i>
+                    </div>
+                    <button type="submit">Signup</button>
+                </form>
+            </div>
+            <div class="login" id="log-in">
+                <h2 id="login-btn">Login</h2>
+                <form action="/login" method="post" class="center">
+                    <input type="text" placeholder="Email address" name="email">
+                    <div class="password-container">
+                        <input type="password" placeholder="Password" id="loginpassword" name="password">
+                        <i class="fa-solid fa-eye openlogin"></i>
+                        <i class="fa-solid fa-eye-slash hide closelogin"></i>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
