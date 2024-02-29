@@ -4,6 +4,14 @@
     align-items: center;
 }
 
+.user-dashboard a{
+    text-decoration: none;
+}
+
+.user-dashboard h1{
+    cursor: pointer;
+}
+
 .user-dashboard h2{
     color: white;
 }
@@ -42,16 +50,23 @@
 }
 
 .left-container .review{
-    display: flex;
-}
-
-.left-container .review span{
-    margin-right: 5px;
+    box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
 }
 
 .left-container .review p{
     color: rgb(27, 53, 90);
     text-align: left;
+    margin-bottom: 6px;
+}
+
+.left-container .review p:last-child{
+    color: rgba(0, 0, 0, 0.61);
+    text-align: right;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 1px rgb(27, 53, 90);
 }
 
 .left-contant{
@@ -68,6 +83,8 @@
     justify-content: center;
     padding:10px;
     border-radius: 8px;
+    box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.2);
+
 }
 
 .content-container{
@@ -86,7 +103,10 @@
 .right-container .form h3{
     font-size: 1.2rem;
     text-align: center;
-    color: rgb(27, 53, 90);;
+    color: rgb(27, 53, 90);
+    margin-bottom: 0;
+    text-shadow: 1px 1px 2px rgb(255, 255, 255);
+    font-weight: 600;
 }
 
 .right-container .form textarea{
@@ -103,7 +123,10 @@
 .right-container .form button {
     display: block;
     margin: auto;
-    background-color: white;
+    /* background-color: white; */
+    background-color: rgb(27, 53, 90);
+    color: white;
+    box-shadow: 1px 1px 4px 2px white;
     border: none;
     padding: 2px 15px;
     border-radius: 4px;

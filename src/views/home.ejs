@@ -8,7 +8,7 @@
 </header>
 <%if (!creds){%>
     <script>
-        alert("Wrong Credintial, Please signup if you new user!")
+        alert("Wrong Credintial, Please signup if you're new user!")
     </script>
 <%}%>
 <main>
@@ -17,10 +17,11 @@
             <div class="signup center" id="sign-up">
                 <h2 id="sign-btn">Signup</h2>
                 <form id="signup-form" class="center">
-                    <input type="text" placeholder="Full Name" name="fullname" id="fullname">
-                    <input type="text" placeholder="Email address" name="email" id="signup-email">
+                    <input type="text" placeholder="Full Name" name="fullname" id="fullname" required>
+                    <input type="text" placeholder="Designation" name="designation" id="designation" required>
+                    <input type="email" placeholder="Email address" name="email" id="signup-email" required>
                     <div class="password-container">
-                        <input type="password" placeholder="Password" class="signuppassword" name="password" id="signup-password">
+                        <input type="password" placeholder="Password" class="signuppassword" name="password" id="signup-password" required>
                         <i class="fa-solid fa-eye opensignup"></i>
                         <i class="fa-solid fa-eye-slash hide closesignup"></i>
                     </div>
@@ -30,9 +31,9 @@
             <div class="login" id="log-in">
                 <h2 id="login-btn">Login</h2>
                 <form action="/login" method="post" class="center">
-                    <input type="text" placeholder="Email address" name="email">
+                    <input type="email" placeholder="Email address" name="email" required>
                     <div class="password-container">
-                        <input type="password" placeholder="Password" id="loginpassword" name="password">
+                        <input type="password" placeholder="Password" id="loginpassword" name="password" required>
                         <i class="fa-solid fa-eye openlogin"></i>
                         <i class="fa-solid fa-eye-slash hide closelogin"></i>
                     </div>

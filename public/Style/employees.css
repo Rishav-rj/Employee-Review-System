@@ -1,0 +1,128 @@
+.employee-main a{
+    text-decoration: none;
+}
+
+.add-employee{
+    display: flex;
+    justify-content: end;
+}
+
+.add-employee button{
+    background-color: rgb(27,53,90);
+    outline: none;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    margin: 25px 50px 10px 50px;
+}
+
+.employees-container{
+    margin: 10px 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.employee-card{
+    background-color: rgb(27,53,90);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+    width:280px;
+}
+
+.employee-card h3{
+    color: white;
+}
+.employee-card p{
+    color: white;
+}
+
+.employee-card .assign{
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: rgb(27,53,90);
+}
+
+.employee-card .icon-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.employee-card .icon-container>i{
+    color: white;
+    font-size: 3rem;
+}
+
+.employee-card .icons{
+    display: flex;
+    align-items: center;
+}
+
+.employee-card .icons i{
+    background-color: white;
+    color: rgb(27,53,90);
+    width: 30px;
+    height:30px;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.employee-card .icons button{
+    background-color: white;
+    color: rgb(27,53,90);
+    width: 30px;
+    height:30px;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.add-employee-form form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.add-employee-form form input{
+    outline: none;
+    padding: 5px;
+    width:80%;
+    margin:10px
+}
+
+
+.add-employee-form .isAdmin{
+    width: 80%;
+}
+
+.add-employee-form .isAdmin label{
+    display: inline;
+    margin-left: 5px;
+}   
+.add-employee-form .isAdmin input{
+    display: inline;
+    width:20px;
+}  
+
+.add-employee-form button{
+    background-color: rgb(27,53,90);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    margin: 20px 0;
+    color: white;
+}
+
+
+
+

@@ -53,6 +53,7 @@ signupFormBtn.addEventListener('submit', async (e)=>{
     e.preventDefault()
 
     const fullname = document.getElementById("fullname").value
+    const designation = document.getElementById("designation").value
     const email = document.getElementById("signup-email").value
     const password = document.getElementById("signup-password").value
 
@@ -64,12 +65,12 @@ signupFormBtn.addEventListener('submit', async (e)=>{
             },
             body:JSON.stringify({
                 fullname,
+                designation,
                 email,
                 password
             })
         })
 
-        console.log(res);
         if(res.ok){
             alert("Registered successfully!")
             loginform()
@@ -79,5 +80,10 @@ signupFormBtn.addEventListener('submit', async (e)=>{
     }catch(err){
         console.error("Error", err);
     }
-
 })
+
+
+function goback(){
+    window.history.back()
+}
+

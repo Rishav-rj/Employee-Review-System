@@ -1,0 +1,140 @@
+<header>
+    <nav class="user-dashboard">
+        <a href="/dashboard">
+            <h1>
+                <i class="fa-solid fa-users-between-lines" style="color: #f9fafa;"></i>
+                ERS
+            </h1>
+        </a>
+        <div>
+            <h2>Welcome <%=user.fullname %></h2>
+        </div>
+        <div>
+            <a href="/employees">
+                <button>Employees</button>
+            </a>
+            <a href="/logout">
+                <button>Sign Out</button>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main class="employee-main">
+    <div class="add-employee">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+                <i class="fa-solid fa-user-plus"></i>
+                Add Employee
+            </button>
+    </div>
+    <div class="employees-container">
+
+        <% employees.map((employee)=>{ %>
+            <div class="employee-card">
+                <div class="icon-container">
+                    <i class="fa-regular fa-address-card"></i>
+                    <div class="icons">
+                        <button onclick="editEmployee('<%= employee._id %>', '<%= employee.fullname %>', '<%= employee.designation %>', '<%= employee.email %>', '<%= employee.isAdmin %>')" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                            <i class="fa-solid fa-user-pen"></i>
+                        </button>
+                        <a href="employees/<%=employee._id%>/delete">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                    </div>
+                </div>
+                <h3><%=employee.fullname%></h3>
+                <p><%=employee.designation%></p>
+                <button type="button" class="assign" data-bs-toggle="modal" data-bs-target="#assignEmployeeModal" data-employee-id="<%=employee._id%>">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Assign Review
+                </button>
+            </div>
+        <% }) %>
+
+    </div>
+</main>
+
+  
+<!--Add Employees Modal -->
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Employee</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body add-employee-form">
+        <form action="employees/add" method="post" class="center">
+            <input type="text" placeholder="Full Name" name="fullname" required>
+            <input type="text" placeholder="Designation" name="designation" required>
+            <input type="email" placeholder="Email address" name="email" required>
+            <input type="text" placeholder="Password" class="signuppassword" name="password" id="signup-password" required>
+            <div class="isAdmin">
+                <label for="make-admin">Admin Access</label>
+                <input type="checkbox" id="make-admin" name="isAdmin" value="true">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+    </div>
+</div>
+</div>
+
+
+<!--Assign Review Modal -->
+<div class="modal fade" id="assignEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Assign Employee for Review</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body add-employee-form">
+            <form action="employees/assign" method="post" class="center">
+                <input type="hidden" id="employeeId" name="employeeId" required>
+                <select name="employeeToReview" id="employeeToReview">
+                    <% employees.map((employee)=>{ %>
+                        <option value="<%=employee._id%>"><%=employee.fullname%></option>
+                    <%})%>
+                </select>
+                <button type="submit">Assign</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!--Edit Employees Modal -->
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Employee</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body add-employee-form">
+            <form action="employees/update" method="post" class="center">
+                <input type="hidden" name="employeeId"  id="userId">
+                <input type="text" placeholder="Full Name" name="fullname"  id="editName">
+                <input type="text" placeholder="Designation" name="designation"  id="editDesig">
+                <input type="email" placeholder="Email address" name="email"  id="editEmail">
+                <input type="text" placeholder="New Password" class="signuppassword" name="password" >
+                <div class="isAdmin">
+                    <label for="make-admin">Admin Access</label>
+                    <input type="checkbox" name="isAdmin" value="true" id="isAdmin">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>

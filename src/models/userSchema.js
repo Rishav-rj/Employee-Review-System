@@ -5,6 +5,10 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    designation:{
+        type:String,
+        required:true
+    },
     email:{
         type:String,
         required:true,
@@ -21,13 +25,17 @@ const UserSchema = new mongoose.Schema({
     reviews:[
         {   
             _id: false,
+            username:{
+                type:String,
+            },
             content:{
                 type:String
             }
         }
     ],
     assignedFeedbacks:[
-        {
+        {   
+            _id: false,
             userId:{
                 type:mongoose.Schema.Types.ObjectId,
                 ref:"User"

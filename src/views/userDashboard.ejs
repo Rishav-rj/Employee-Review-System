@@ -1,9 +1,11 @@
 <header>
     <nav class="user-dashboard">
-        <h1>
-            <i class="fa-solid fa-users-between-lines" style="color: #f9fafa;"></i>
-            ERS
-        </h1>
+        <a href="/dashboard">
+            <h1>
+                <i class="fa-solid fa-users-between-lines" style="color: #f9fafa;"></i>
+                ERS
+            </h1>
+        </a>
         <div>
             <h2>Welcome <%=user.fullname%></h2>
         </div>
@@ -23,11 +25,10 @@
             </h2>
             <div class="left-contant content-container">
                 <%if(user.reviews.length>0){%>
-                    <% let i = 0%>
-                    <%user.reviews.map((review)=>{ i++ %>
+                    <%user.reviews.map((review)=>{ %>
                         <div class="review">
-                            <span><%=i%>.</span>
                             <p><%= review.content %></p>
+                            <p><%= review.username %></p>
                         </div>    
                     <%})%>
                 <%}%>

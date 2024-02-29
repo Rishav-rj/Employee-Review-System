@@ -31,7 +31,7 @@ main .container{
 
 main .container .forms{
     background-color: rgb(16, 46, 111);
-    height:410px;
+    height:480px;
     width:330px;
     position: relative;
     overflow: hidden;
@@ -89,7 +89,7 @@ main .container .login{
     align-items: center;
     flex-direction: column;
     position: absolute;
-    top: 80%;
+    top: 83%;
     left: -18%;
     background-color: white;
     width:450px;
@@ -110,7 +110,7 @@ main .container .login h2{
 }
 
 .move-up-login{
-    transform: translateY(-240px) !important;
+    transform: translateY(-300px) !important;
 }
 
 .move-up-login h2{
