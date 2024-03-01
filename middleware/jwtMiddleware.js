@@ -6,7 +6,7 @@ const Auth = async(req, res, next)=>{
     const {JWTToken} = req.cookies
 
     try{
-        const payload = jwt.verify(JWTToken, "k8LKe0SGZrSf3138owfM2zPIrrX9")
+        const payload = jwt.verify(JWTToken, process.env.JWT_SECRET)
         req.userId = payload.userId
         next()
     }catch(err){

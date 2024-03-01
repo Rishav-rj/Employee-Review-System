@@ -4,10 +4,13 @@ import { addUser, assignToReview, deleteUser, getAllEmployees, getuserdetail, su
 
 export default class UserController {
 
+    // render Signup/Login paage
 
     getUserForm = async(req, res)=>{
         res.render("home", {"creds":true})
     }
+
+    // render dashboard as per admin or employee access
 
     getdashboard = async(req, res)=>{
         const userId = req.userId
@@ -19,6 +22,7 @@ export default class UserController {
         }
     }
 
+    // New user creation
 
     signup = async(req, res)=>{ 
         let {fullname, designation, email, password} = req.body;
@@ -32,18 +36,22 @@ export default class UserController {
         }
     }
 
+    // Login for existing user
+
     login = async(req, res)=>{ 
         const {email, password} = req.body;
         
         const user = await userlogin(email, password)
         if(user){
-            const jwtToken = jwt.sign({userId:user[0]._id}, 'k8LKe0SGZrSf3138owfM2zPIrrX9', {expiresIn: "1h"})
+            const jwtToken = jwt.sign({userId:user[0]._id}, process.env.JWT_SECRET, {expiresIn: "1h"})
             res.cookie("JWTToken", jwtToken)
             res.redirect("/dashboard")   
         }else{
             res.render("home", {"creds":false})
         }
     }
+
+    // submiting form content to perticular employee
 
     submitFeedback = async(req, res)=>{
         const {userId, content} = req.body
@@ -52,12 +60,16 @@ export default class UserController {
         res.redirect("/dashboard")
     }
 
+    // rendering all the employees if the user is admin
+
     getEmployees = async(req, res)=>{
         const userId = req.userId
         const user = await getuserdetail(userId)
         const employees = await getAllEmployees()
         res.render("employees", {user, employees})
     }
+
+    // Adding new Employee by Admin
 
     addEmployee = async(req, res)=>{
         let {fullname, designation, email, password, isAdmin} = req.body;
@@ -71,11 +83,15 @@ export default class UserController {
         }
     }
 
+    // Assigning Employee for review from another Employee
+
     assignEmployee = async(req, res)=>{
         const {employeeId, employeeToReview} = req.body
         const status = await assignToReview(employeeId, employeeToReview)
         res.redirect("/employees")
     }
+
+    // udpate Employee details by Admin
 
     updateEmployee = async(req, res)=>{
         let {employeeId, fullname, designation, email, password, isAdmin} = req.body
@@ -86,6 +102,8 @@ export default class UserController {
         res.redirect("/employees")
     }
 
+    // Delete existing Employee by Admin
+
     deleteEmployee = async(req, res)=>{
         const {id} = req.params
         await deleteUser(id)
@@ -93,6 +111,7 @@ export default class UserController {
 
     }
 
+    // logout from the dashboard
 
     logout = async(req, res)=>{
         res.clearCookie("JWTToken")
