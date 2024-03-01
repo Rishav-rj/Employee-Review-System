@@ -75,6 +75,9 @@ The server will start listening on the specified port (default is 3000).
 - Node.js
 - Express.js
 - MongoDB
+- dotenv
+- cookie-parser
+- express-ejs-layouts
 - JWT for authentication
 - bcrypt for password hashing
 
